@@ -1,0 +1,24 @@
+<h1>New Project</h1>
+<form id="new-project" #form="ngForm" (ngSubmit)="createProject(form.value)">
+  <div class="form-group">
+    <label for="title">Title:</label>
+    <input class="form-control" name="title" ngModel>
+  </div>
+  <div class="form-group">
+    <label for="managers">Managers:</label>
+    <input class="form-control" name="manager" ngModel>
+  </div>
+  <div class="form-group">
+    <label for="description">Description:</label>
+    <input class="form-control" name="description" ngModel>
+  </div>
+  <div class="form-group">
+    <label for="funding-target">Funding Target:</label>
+    <input type='number' class="form-control" name="funding_target" ngModel>
+  </div>
+  <div class="form-group">
+    <label for="swag">Swag:</label>
+    <input class="form-control" name="swag" ngModel>
+  </div>
+  <button type="submit" class="btn btn-success">Create Project</button>
+</form>
