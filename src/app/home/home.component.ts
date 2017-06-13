@@ -15,5 +15,5 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.projects = this.firebaseService.getProjects();
   }
-
+  
 }

@@ -24,12 +24,18 @@ export class FirebaseService {
   editProject(project){
     let dbProject = this.getProjectByID(project.$key);
     dbProject.update({
+      category: project.category,
       swag: project.swag,
       title: project.title,
       managers: project.managers,
       description: project.description,
       fundingTarget: project.fundingTarget
     });
+  }
+
+  deleteProject(project){
+    let dbProject = this.getProjectByID(project.$key);
+    dbProject.remove();
   }
 
 }

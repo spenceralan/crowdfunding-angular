@@ -12,6 +12,7 @@ import { FirebaseService } from '../firebase.service';
 export class EditProjectComponent implements OnInit {
   projectID: string;
   project;
+  categories: string[] = ["Charitable", "Product/Business Idea", "Creative Project"]
   constructor(private route: ActivatedRoute, private firebaseService: FirebaseService, private router: Router) { }
 
   ngOnInit() {
@@ -21,7 +22,12 @@ export class EditProjectComponent implements OnInit {
 
   editProject(project){
     this.firebaseService.editProject(project);
-    this.router.navigate([''])
+    this.router.navigate(['project', this.projectID])
+  }
+
+  deleteProject(project){
+    this.firebaseService.deleteProject(project);
+    this.router.navigate(['']);
   }
 
 }

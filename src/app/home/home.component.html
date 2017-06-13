@@ -1,5 +1,5 @@
 <button routerLink='new-project' class="btn btn-primary">New Project</button>
 <div class="project" *ngFor="let project of projects | async">
-<h1 [routerLink]="['edit-project', project.$key]">{{project.title}}</h1>
+<h1 [routerLink]="['project', project.$key]">{{project.title}}</h1>
 <h3>Funding Goal: ${{project.fundingTarget}}</h3>
 </div>
