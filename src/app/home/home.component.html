@@ -1,5 +1,21 @@
-<button routerLink='new-project' class="btn btn-primary">New Project</button>
+<a routerLink='new-project' class="btn btn-primary">New Project</a>
+<hr>
+<a class="btn btn-default" (click)="filterBy('Creative')">Creative</a>
+<a class="btn btn-default" (click)="filterBy('Product/Business')">Product/Business</a>
+<a class="btn btn-default" (click)="filterBy('Charitable')">Charitable</a>
+<a class="btn btn-default" (click)="filterBy('Uncategorized')">Uncategorized</a>
+<a class="btn btn-default" (click)="filterBy('All')">All</a>
+
+
 <div class="project" *ngFor="let project of projects | async">
-<h1 [routerLink]="['project', project.$key]">{{project.title}}</h1>
-<h3>Funding Goal: ${{project.fundingTarget}}</h3>
+  <div *ngIf="project.category === this.displayCategory">
+    <h1 [routerLink]="['project', project.$key]">{{project.title}}</h1>
+    <h3>Funding Goal: ${{project.fundingTarget}}</h3>
+  </div>
+</div>
+<div *ngIf="this.displayCategory === 'All'">
+  <div class="project" *ngFor="let project of projects | async">
+      <h1 [routerLink]="['project', project.$key]">{{project.title}}</h1>
+      <h3>Funding Goal: ${{project.fundingTarget}}</h3>
+  </div>
 </div>

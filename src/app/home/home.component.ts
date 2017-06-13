@@ -9,11 +9,16 @@ import { FirebaseService } from '../firebase.service';
   providers: [FirebaseService]
 })
 export class HomeComponent implements OnInit {
+  displayCategory: string = "All"
   projects;
   constructor(private firebaseService: FirebaseService) { }
 
   ngOnInit() {
     this.projects = this.firebaseService.getProjects();
   }
-  
+
+  filterBy(category) {
+    this.displayCategory = category;
+  }
+
 }
