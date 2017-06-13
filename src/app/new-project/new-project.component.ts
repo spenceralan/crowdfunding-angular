@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../firebase.service';
 import { Project } from '../project.model';
-import { routing } from '../app.routing';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-project',
@@ -11,7 +11,7 @@ import { routing } from '../app.routing';
 })
 export class NewProjectComponent implements OnInit {
 
-  constructor(private firebaseService: FirebaseService) { }
+  constructor(private firebaseService: FirebaseService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -19,6 +19,7 @@ export class NewProjectComponent implements OnInit {
   createProject(formValues){
     let newProject = new Project(formValues);
     this.firebaseService.saveProject(newProject);
+    this.router.navigate([''])
   }
 
 
