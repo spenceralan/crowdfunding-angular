@@ -1,3 +1,26 @@
-<p>
-  edit-project works!
-</p>
+<div *ngIf="project">
+  <h1>Edit {{project.title}}</h1>
+  <form id="edit-project">
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input class="form-control" name="title" [(ngModel)]='project.title'>
+    </div>
+    <div class="form-group">
+      <label for="managers">Managers:</label>
+      <input class="form-control" name="manager" [(ngModel)]='project.managers'>
+    </div>
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <input class="form-control" name="description" [(ngModel)]='project.description'>
+    </div>
+    <div class="form-group">
+      <label for="funding-target">Funding Target:</label>
+      <input type='number' class="form-control" name="funding_target" [(ngModel)]='project.fundingTarget'>
+    </div>
+    <div class="form-group">
+      <label for="swag">Swag:</label>
+      <input class="form-control" name="swag" [(ngModel)]='project.swag'>
+    </div>
+    <button (click)="editProject(project)" class="btn btn-success">Save Project</button>
+  </form>
+</div>
