@@ -6,7 +6,15 @@
   <p>{{project.description}}</p>
   <h3>Contribution rewards: {{project.swag}}</h3>
   <div id="project-controls">
-    <a class="btn btn-default">Contribute</a>
+    <form>
+      <label>Name</label>
+      <input class="form-control" name="name">
+      <label>Donation Amount</label>
+      <input class="form-control" name="amount" type=number min="0.01" step="0.01" [(ngModel)]='amount'>
+      <br>
+      <a (click)="openCheckout(amount.value)" class="btn btn-default">Contribute ${{amount}}</a>
+    </form>
+    <br>
     <a [routerLink]="['/edit-project', project.$key]" class="btn btn-info">Edit</a>
   </div>
 </div>
