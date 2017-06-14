@@ -7,14 +7,23 @@
   <h3>Contribution rewards: {{project.swag}}</h3>
   <div id="project-controls">
     <form>
-      <label>Name</label>
-      <input class="form-control" name="name">
-      <label>Donation Amount</label>
-      <input class="form-control" name="amount" type=number min="0.01" step="0.01" [(ngModel)]='amount'>
+      <div class="form-group">
+        <label>Name</label>
+        <input class="form-control" name="name" [(ngModel)]='name'>
+      </div>
+      <div class="form-group">
+        <label>Donation Amount</label>
+        <input class="form-control" name="amount" type=number min="0.01" step="0.01" [(ngModel)]='amount'>
+      </div>
       <br>
-      <a (click)="openCheckout(amount.value)" class="btn btn-default">Contribute ${{amount}}</a>
+      <a (click)="savePayment()" class="btn btn-default">Contribute ${{amount}}</a>
     </form>
     <br>
     <a [routerLink]="['/edit-project', project.$key]" class="btn btn-info">Edit</a>
+  </div>
+  <div *ngFor="let contributor of contributors | async | projectContributors:project">
+    <hr>
+    <h1>{{contributor.name}}</h1>
+    <h3>${{contributor.amount}}</h3>
   </div>
 </div>

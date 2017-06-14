@@ -7,11 +7,13 @@ import { routing } from './app.routing';
 import { AppComponent } from './app.component';
 import { masterFirebaseConfig } from './api-keys';
 import { AngularFireModule } from 'angularfire2';
+import * as firebase from "firebase";
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
 import { NewProjectComponent } from './new-project/new-project.component';
 import { EditProjectComponent } from './edit-project/edit-project.component';
 import { AdminComponent } from './admin/admin.component';
+import { ProjectContributorsPipe } from './project-contributors.pipe';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -19,6 +21,8 @@ export const firebaseConfig = {
   databaseURL: masterFirebaseConfig.databaseURL,
   storageBucket: masterFirebaseConfig.storageBucket
 };
+
+firebase.initializeApp(firebaseConfig);
 
 @NgModule({
   declarations: [
@@ -28,6 +32,7 @@ export const firebaseConfig = {
     NewProjectComponent,
     EditProjectComponent,
     AdminComponent,
+    ProjectContributorsPipe,
   ],
   imports: [
     BrowserModule,

@@ -5,8 +5,11 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 @Injectable()
 export class FirebaseService {
   projects: FirebaseListObservable<any[]>;
+  payments: FirebaseListObservable<any[]>;
+
   constructor(private database: AngularFireDatabase) {
     this.projects = database.list('projects');
+    this.payments = database.list('payments');
   }
 
   getProjects(){
@@ -36,6 +39,14 @@ export class FirebaseService {
   deleteProject(project){
     let dbProject = this.getProjectByID(project.$key);
     dbProject.remove();
+  }
+
+  getPayments(){
+    return this.payments;
+  }
+
+  savePayment(payment) {
+    this.payments.push(payment);
   }
 
 }
